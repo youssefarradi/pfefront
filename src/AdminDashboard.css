@@ -1,0 +1,240 @@
+/* AdminDashboard.css - Modern Dark Theme with Animations */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9c27b0;
+    border-radius: 10px;
+    border: 2px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7b1fa2;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardHover {
+    from {
+        transform: translateY(0);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    to {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(156, 39, 176, 0.3);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(156, 39, 176, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(156, 39, 176, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(156, 39, 176, 0);
+    }
+}
+
+/* Admin Cards */
+.admin-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(156, 39, 176, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-card:hover {
+    animation: cardHover 0.3s ease-out forwards;
+    border-color: rgba(156, 39, 176, 0.3);
+}
+
+.admin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.admin-card:hover::before {
+    opacity: 1;
+}
+
+/* Table Styles */
+.MuiTable-root {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.MuiTableRow-root {
+    transition: background-color 0.2s ease;
+}
+
+.MuiTableRow-root:hover {
+    background-color: rgba(156, 39, 176, 0.05) !important;
+}
+
+/* Button Effects */
+.MuiButton-containedPrimary {
+    position: relative;
+    overflow: hidden;
+}
+
+.MuiButton-containedPrimary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.MuiButton-containedPrimary:focus:not(:active)::after {
+    animation: pulse 1s ease-out;
+}
+
+/* Dialog Animations */
+.MuiDialog-paper {
+    animation: fadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Status Icons */
+.success-icon {
+    animation: fadeIn 0.6s ease-out, pulse 2s infinite 0.6s;
+}
+
+.error-icon {
+    animation: fadeIn 0.6s ease-out, shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .admin-card {
+        min-width: 100%;
+    }
+
+    .MuiTable-root {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Special Effects for Admin Elements */
+.admin-badge {
+    animation: pulse 2s infinite;
+}
+
+.admin-only {
+    position: relative;
+}
+
+.admin-only::after {
+    content: 'ADMIN';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #9c27b0;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    animation: pulse 2s infinite;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Upload Area Effects */
+.upload-area {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: #9c27b0 !important;
+    background-color: rgba(156, 39, 176, 0.05) !important;
+}
+
+.upload-area.active {
+    border-color: #00bcd4 !important;
+    background-color: rgba(0, 188, 212, 0.05) !important;
+}
+
+/* Chip Animations */
+.MuiChip-root {
+    transition: all 0.3s ease;
+}
+
+.MuiChip-root:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Avatar Pulse for Active Admin */
+.active-admin-avatar {
+    animation: pulse 2s infinite;
+}

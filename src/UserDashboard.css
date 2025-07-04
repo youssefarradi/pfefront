@@ -1,0 +1,193 @@
+/* UserDashboard.css - Modern & Animated Design */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Global animations and effects */
+body {
+    /* Adding subtle background animations */
+    background: radial-gradient(circle at 10% 20%, rgba(187, 134, 252, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(3, 218, 198, 0.05) 0%, transparent 50%);
+    background-blend-mode: overlay;
+    animation: backgroundPulse 40s infinite ease-in-out alternate;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        background-position: 0% 0%, 100% 100%;
+        background-size: 150% 150%, 150% 150%;
+    }
+    50% {
+        background-position: 50% 50%, 50% 50%;
+        background-size: 160% 160%, 160% 160%;
+    }
+    100% {
+        background-position: 0% 0%, 100% 100%;
+        background-size: 150% 150%, 150% 150%;
+    }
+}
+
+/* Page entry animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #BB86FC;
+    border-radius: 10px;
+    border: 3px solid #1e1e1e; /* Creates a slight border effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9f49f8;
+}
+
+/* Dashboard Cards (Paper components) */
+.dashboard-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+    position: relative; /* For potential pseudo-element effects */
+    overflow: hidden; /* Ensure content doesn't spill out with effects */
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7); /* More pronounced shadow on hover */
+    /* Optional: subtle gradient shift on hover */
+    background: linear-gradient(135deg, #282828 0%, #303030 100%);
+}
+
+/* Table Enhancements */
+.table-container-shadow {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Deeper shadow for table */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table-row-hover:hover {
+    background-color: rgba(187, 134, 252, 0.03) !important; /* Subtle highlight on row hover */
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Input/Select field focus glow - Material-UI handles most, but for consistency: */
+.MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline {
+    box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.2); /* Soft primary glow */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Upload Dialog Specifics */
+.file-info-card {
+    background-color: rgba(3, 218, 198, 0.1) !important; /* Secondary color with transparency */
+    border-color: rgba(3, 218, 198, 0.3) !important;
+    padding: 1rem !important; /* Adjust padding */
+    transition: all 0.3s ease-in-out;
+}
+
+.file-info-card:hover {
+    transform: scale(1.02); /* Slight pop on hover */
+    box-shadow: 0 5px 20px rgba(3, 218, 198, 0.2);
+}
+
+/* Status Icon Animations in Dialog */
+.icon-pop-in {
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Bouncy pop */
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.icon-shake {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both; /* Error shake */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.error-message {
+    animation: slideInError 0.4s ease-out;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: rgba(207, 102, 121, 0.15); /* error.main with transparency */
+    border: 1px solid rgba(207, 102, 121, 0.3);
+}
+
+@keyframes slideInError {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* User Info/Settings Card */
+.settings-card {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Upload summary card */
+.upload-summary-card {
+    background-color: rgba(102, 187, 106, 0.1) !important; /* Success color with transparency */
+    border: 1px solid rgba(102, 187, 106, 0.3) !important;
+    padding: 20px !important;
+}
+
+/* Responsive adjustments for subtle animations */
+@media (max-width: 600px) {
+    /* Reduce some animation intensity on smaller screens for performance */
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    }
+}
